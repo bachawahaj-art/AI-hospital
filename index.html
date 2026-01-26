@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APS Boys Hospital| AI-Powered Healthcare</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+<header>
+    <div class="logo">APS BOYS HOSPITAL ⚕️ </div>
+    <nav>
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('departments')">Departments</button>
+        <button onclick="showPage('consultancy')">Online AI Consultancy</button>
+        <button onclick="showPage('ai-reports')">AI Reports Consultant</button>
+        <button onclick="showPage('delivery')">Home Delivery</button>
+        <button onclick="showPage('contact')">Contact</button>
+    </nav>
+</header>
+
+<main id="home" class="page active">
+    <section class="hero">
+        <h1>Advanced Healthcare for Pakistan</h1>
+        <p>Experience the future of medicine with our AI-driven diagnosis and world-class specialists.</p>
+        <button class="btn-submit" style="width:auto;" onclick="showPage('consultancy')">Start Free AI Consultation</button>
+    </section>
+</main>
+
+<div id="departments" class="page">
+    <h2 style="text-align:center">Specialized Departments</h2>
+    <div class="grid">
+        <div class="card" onclick="openDept('Cardiology', 'Dr. Faisal 👨‍⚕️ , Dr. Sarah 👩‍⚕️', 'Specializing in heart surgeries and hypertension.')">
+            <h3>Cardiology ❤️ </h3>
+            <p>Heart & Vascular Care</p>
+        </div>
+        <div class="card" onclick="openDept('Pediatrics', 'Dr. Zainab 👩‍⚕️ , Dr. Omar 👨‍⚕️', 'Child health and immunization experts.')">
+            <h3>Pediatrics 🍼 </h3>
+            <p>Children's Health</p>
+        </div>
+         <div class="card" onclick="openDept('Physciatry', 'Dr. Nazia , Dr. Ahmed 👨‍⚕️', 'Mental well-being and health care.')">
+            <h3>Physciatry 🙂 </h3>
+            <p>Mental Health</p>
+        </div>
+        <div class="card" onclick="openDept('Gynaecology', 'Dr. Shazia 👩‍⚕️ , Dr. Aiman 👩‍⚕️', 'Pregnancy, labor and child delivery.')">
+            <h3>Gynaecology 🩺 </h3>
+            <p>Pregnancy</p>
+        </div>
+        <div class="card" onclick="openDept('Neurology', 'Dr. Kamran 👨‍⚕️ , Dr. Ali 👨‍⚕️', 'Brain and nervous system specialists.')">
+            <h3>Neurology 🧠 </h3>
+            <p>Neurological Disorders</p>
+        </div>
+        <div class="card" onclick="openDept('Radiology', 'Dr. Ammar 👨‍⚕️ , Dr. Abbasi 👨‍⚕️', 'X-rays department and bone structure analysis.')">
+            <h3>Radiology 🦴 </h3>
+            <p>X-rays and MRI</p>
+        </div>
+        <div class="card" onclick="openDept('Physiotherapy', 'Dr. Rayan 👨‍⚕️ , Dr. Sidra 👩‍⚕️', 'Physical well-being and health')">
+            <h3>Physiotherapy 💪 </h3>
+            <p>Physical health</p>
+        </div>
+        <div class="card" onclick="openDept('Dialysis', 'Dr. Samad 👨‍⚕️ , Dr. Abbas 👨‍⚕️', 'Department of blood dialysis and related treatments.')">
+            <h3>Dialysis Department 💉 </h3>
+            <p>Blood Related</p>
+        </div>
+        <div class="card" onclick="openDept('Dental', 'Dr. Mehak 👩‍⚕️ ', 'Jaws, Teeth and Gums treatments.')">
+            <h3>Dental unit 🦷 </h3>
+            <p>Mouth Care</p>
+        </div>
+    </div>
+</div>
+
+<div id="consultancy" class="page">
+    <div class="consult-container">
+        <h2 style="color:var(--primary)">AI Smart Diagnosis</h2>
+        <p>Enter your details and symptoms for an instant AI-powered health assessment.</p>
+        <hr>
+        <form id="aiForm">
+            <label>Full Name</label>
+            <input type="text" id="pName" placeholder="Enter your name" required>
+            
+            <label>Age</label>
+            <input type="number" id="pAge" placeholder="Enter your age" required>
+
+            <label>Select Your Main Symptom</label>
+            <select id="pSymptom">
+                <option value="none">-- Choose Symptom --</option>
+                <optgroup label="Respiratory">
+                    <option value="flu">Fever, Chills, Body Ache</option>
+                    <option value="cough">Dry Cough, Shortness of Breath</option>
+                    <option value="sore_throat">Sore Throat, Difficulty Swallowing</option>
+                    <option value="congestion">Nasal Congestion, Runny Nose</option>
+                    <option value="wheezing">Wheezing, Chest Tightness</option>
+                    <option value="sneezing">Frequent Sneezing, Watery Eyes</option>
+                </optgroup>
+                <optgroup label="Digestive">
+                    <option value="stomach">Stomach Pain, Nausea</option>
+                    <option value="diarrhea">Loose Stools, Dehydration</option>
+                    <option value="constipation">Difficulty in Bowel Movement</option>
+                    <option value="heartburn">Acid Reflux, Heartburn</option>
+                    <option value="bloating">Abdominal Bloating, Gas</option>
+                    <option value="vomiting">Persistent Vomiting</option>
+                </optgroup>
+                <optgroup label="Neurological & Pain">
+                    <option value="migraine">Severe Headache, Light Sensitivity</option>
+                    <option value="dizziness">Dizziness, Vertigo</option>
+                    <option value="back_pain">Lower Back Pain, Stiffness</option>
+                    <option value="joint_pain">Joint Pain, Swelling</option>
+                    <option value="insomnia">Difficulty Sleeping, Fatigue</option>
+                    <option value="numbness">Tingling or Numbness in Limbs</option>
+                </optgroup>
+                <optgroup label="Skin & Allergy">
+                    <option value="skin">Itching, Skin Rash</option>
+                    <option value="acne">Severe Acne Breakout</option>
+                    <option value="hair_loss">Excessive Hair Fall</option>
+                    <option value="eye_redness">Red, Itchy, or Swollen Eyes</option>
+                </optgroup>
+                <optgroup label="General">
+                    <option value="fatigue">Extreme Tiredness, Weakness</option>
+                    <option value="weight_loss">Unexplained Weight Loss</option>
+                    <option value="anxiety">Palpitations, Anxiety</option>
+                </optgroup>
+            </select>
+
+            <label>Briefly describe how you feel</label>
+            <textarea id="pDetail" rows="3"></textarea>
+
+            <button type="button" class="btn-submit" onclick="runAIDiagnosis()">Generate AI Prescription</button>
+        </form>
+
+        <div id="ai-result">
+            <h3 style="color: var(--secondary);">Diagnosis Complete</h3>
+            <div id="diagnosisDetail"></div>
+            
+            <div class="prescription-receipt" id="finalPrint"></div>
+            <button class="btn-submit" style="background:var(--dark); margin-top:20px;" onclick="window.print()">Download as PDF / Print</button>
+        </div>
+    </div>
+</div>
+
+<div id="ai-reports" class="page">
+    <div class="consult-container">
+        <h2 style="color:var(--primary)">AI Laboratory Report Analysis</h2>
+        <p>Upload your lab reports (Blood tests, X-rays, MRI, etc.) for a detailed AI interpretation.</p>
+        <hr>
+        
+        <div id="upload-area" style="border: 2px dashed var(--primary); padding: 40px; text-align: center; border-radius: 15px; background: #eef5ff; cursor: pointer;">
+            <input type="file" id="reportFile" accept=".pdf, .doc, .docx, image/*" style="display: none;" onchange="handleFileUpload()">
+            <div onclick="document.getElementById('reportFile').click()">
+                <div style="font-size: 3rem; margin-bottom: 10px;">📄</div>
+                <p><strong>Click to Upload</strong> or drag and drop</p>
+                <p style="font-size: 0.8rem; color:rgb(166, 202, 224);">Supported: PDF, JPG, PNG, DOCX</p>
+            </div>
+            <div id="file-name-display" style="margin-top: 15px; font-weight: bold; color: var(--secondary);"></div>
+        </div>
+
+        <button type="button" id="analyzeBtn" class="btn-submit" style="margin-top: 20px; display: none;" onclick="analyzeReport()">Start AI Analysis</button>
+
+        <div id="analysis-loading" style="display: none; text-align: center; margin-top: 20px;">
+            <div class="spinner" style="border: 4px solid #f3f3f3; border-top: 4px solid var(--primary); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: auto;"></div>
+            <p>Scanning document with Medical AI...</p>
+        </div>
+
+        <div id="report-result" style="display: none; margin-top: 30px; padding: 25px; background: white; border-radius: 12px; border: 2px solid var(--secondary);">
+            <h3 style="color: var(--secondary);">Report Findings</h3>
+            <div id="reportContent"></div>
+            <button class="btn-submit" style="background:var(--dark); margin-top:20px;" onclick="window.print()">Print Official Summary</button>
+        </div>
+    </div>
+</div>
+<div id="delivery" class="page">
+    <div class="consult-container">
+        <h2 style="color:var(--primary)">Medicine Home Delivery 🚚</h2>
+        <p>Upload your AI-generated prescription or a manual one to get medicines delivered to your doorstep.</p>
+        <hr>
+        <form id="deliveryForm">
+            <label>Full Name</label>
+            <input type="text" id="dName" placeholder="Enter recipient name" required>
+
+            <label>Contact Number</label>
+            <input type="tel" id="dPhone" placeholder="03xx-xxxxxxx" required>
+
+            <label>Complete Delivery Address</label>
+            <textarea id="dAddress" rows="3" placeholder="House #, Street, Area, City" required></textarea>
+
+            <label>Upload Prescription Receipt</label>
+            <div id="delivery-upload" style="border: 2px dashed #ccc; padding: 20px; text-align: center; border-radius: 8px; margin-bottom: 15px;">
+                <input type="file" id="prescriptionFile" accept="image/*,.pdf" style="display: none;" onchange="updateFileName()">
+                <div onclick="document.getElementById('prescriptionFile').click()" style="cursor: pointer;">
+                    <span style="font-size: 2rem;">📸</span>
+                    <p id="file-status">Click to upload prescription</p>
+                </div>
+            </div>
+
+            <button type="button" class="btn-submit" onclick="placeOrder()">Place Delivery Order</button>
+        </form>
+
+        <div id="delivery-result" style="display: none; margin-top: 30px; padding: 25px; background: white; border-radius: 12px; border: 2px solid #34a853;">
+            <div class="prescription-receipt" id="deliveryReceipt">
+                </div>
+            <button class="btn-submit" style="background:var(--dark); margin-top:20px;" onclick="window.print()">Print Delivery Slip</button>
+        </div>
+    </div>
+</div>
+<div id="contact" class="page">
+    <div class="consult-container">
+        <h2>Hospital Information</h2>
+        <p><strong>📍 Main Branch:</strong> Army Public School & college (boys), Warsak Road , Peshawar, Pakistan</p>
+        <p><strong>📱 Phone:</strong> +92 32 5510 3443</p>
+        <p><strong>🚑 Emergency:</strong> 1122</p>
+        <p><strong>⏰ Operating Hours:</strong> 24/7 Emergency, 9AM-9PM OPD</p>
+        <p><strong>👨‍⚕️ Deans of Hospital:</strong>Dr Wahajuliman , Dr Ammar Haroon , Dr Shahid & Dr Salman</p>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>&copy; 2026 APS BOYS HOSPITAL | Powered by Medical AI v2.0</p>
+</footer>
+<!-- Easypaisa Payment Modal -->
+<div id="easypaisaModal" class="ep-modal">
+  <div class="ep-content">
+    <div class="ep-header">
+      <img src="Easypaisa-logo.png" alt="Easypaisa">
+      <span onclick="closeEasypaisa()" class="ep-close">×</span>
+    </div>
+
+    <div id="ep-step-1">
+      <h3>Pay with Easypaisa</h3>
+      <label>Mobile Number</label>
+      <input type="tel" id="epNumber" placeholder="03xx-xxxxxxx">
+
+      <label>4-Digit PIN</label>
+    <input type="password" id="epPin" maxlength="4" placeholder="••••">
+<p id="epError" style="color:red; font-size:0.9rem; display:none;">
+    ❌ Payment unsuccessful. Invalid PIN.
+</p>
+
+
+
+      <button class="btn-submit" onclick="processEasypaisa()">Confirm Payment</button>
+    </div>
+
+    <div id="ep-loading" style="display:none;text-align:center;">
+      <div class="spinner"></div>
+      <p>Processing payment…</p>
+    </div>
+
+    <div id="ep-success" style="display:none;text-align:center;">
+      <h3 style="color:#34a853;">✅ Payment Successful</h3>
+      <p id="epTxn"></p>
+      <button class="btn-submit" onclick="closeEasypaisa()">Done</button>
+    </div>
+  </div>
+</div>
+<!-- JazzCash Payment Modal -->
+<div id="jazzcashModal" class="jc-modal">
+  <div class="jc-content">
+    <div class="jc-header">
+      <img src="jc.png" alt="JazzCash">
+      <span onclick="closeJazzCash()" class="jc-close">×</span>
+    </div>
+
+    <div id="jc-step-1">
+      <h3>Pay with JazzCash</h3>
+
+      <label>Mobile Number</label>
+      <input type="tel" id="jcNumber" placeholder="03xx-xxxxxxx">
+
+      <label>4-Digit MPIN</label>
+      <input type="password" id="jcPin" maxlength="4" placeholder="••••">
+<p id="jcError" style="color:#e11d48; font-size:0.9rem; display:none;">
+    ❌ Payment unsuccessful. Invalid MPIN.
+</p>
+
+
+      <button class="btn-submit" style="background:#e11d48;" onclick="processJazzCash()">
+        Confirm Payment
+      </button>
+    </div>
+
+    <div id="jc-loading" style="display:none;text-align:center;">
+      <div class="jc-spinner"></div>
+      <p>Processing payment…</p>
+    </div>
+
+    <div id="jc-success" style="display:none;text-align:center;">
+      <h3 style="color:#e11d48;">✅ Payment Successful</h3>
+      <p id="jcTxn"></p>
+      <button class="btn-submit" style="background:#202124;" onclick="closeJazzCash()">Done</button>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
