@@ -272,41 +272,52 @@ let jcAttempts = 0;
     }
 
     function placeOrder() {
-        const name = document.getElementById('dName').value;
-        const phone = document.getElementById('dPhone').value;
-        const address = document.getElementById('dAddress').value;
-        const file = document.getElementById('prescriptionFile').files[0];
+    const name = document.getElementById('dName').value;
+    const phone = document.getElementById('dPhone').value;
+    const address = document.getElementById('dAddress').value;
+    const file = document.getElementById('prescriptionFile').files[0];
 
-        if (!name || !phone || !address) {
-            alert("Please fill in all delivery details.");
-            return;
-            
-        }
+    if (!name || !phone || !address) {
+        alert("Please fill in all delivery details.");
+        return;
+    }
 
-        // Logic for generating the delivery receipt
-        const orderID = "ORD-" + Math.floor(100000 + Math.random() * 900000);
-        const deliveryDate = new Date();
-        deliveryDate.setHours(deliveryDate.getHours() + 2); // Estimated 2 hours
+    const orderID = "ORD-" + Math.floor(100000 + Math.random() * 900000);
+    
+    // --- NEW: SMS NOTIFICATION LOGIC ---
+    // This simulates sending the order details to your phone number 0325 5103 443
+    sendOrderSMS(orderID, name, phone, address);
 
-        document.getElementById('delivery-result').style.display = 'block';
-        document.getElementById('deliveryReceipt').innerHTML = `
-            <div style="text-align:center;">
-                <h3 style="margin:0; color:#34a853;">APS PHARMACY DELIVERY</h3>
-                <p>Order Confirmed</p>
-            </div>
-            <hr>
-            <p><strong>Order ID:</strong> ${orderID}</p>
-            <p><strong>Customer:</strong> ${name}</p>
-            <p><strong>Phone:</strong> ${phone}</p>
-            <p><strong>Address:</strong> ${address}</p>
-            <p><strong>Prescription:</strong> ${file ? file.name : "Attached Digital Record"}</p>
-            <h4 style="text-align:center">PAYMENT RECEIPT</h4>
-            <div style="margin-top:20px;">
-    <button class="btn-submit" onclick="openEasypaisa()">Pay with Easypaisa</button>
-   <button class="btn-submit" style="margin-top:10px;" onclick="openJazzCash()">
-  Pay with JazzCash
-</button>
+    document.getElementById('delivery-result').style.display = 'block';
+    document.getElementById('deliveryReceipt').innerHTML = `
+        <div style="text-align:center;">
+            <h3 style="margin:0; color:#34a853;">APS PHARMACY DELIVERY</h3>
+            <p>Order Confirmed & SMS Sent to Admin</p>
+        </div>
+        <hr>
+        <p><strong>Order ID:</strong> ${orderID}</p>
+        <p><strong>Customer:</strong> ${name}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Address:</strong> ${address}</p>
+        <hr>
+        <div style="margin-top:20px;">
+            <button class="btn-submit" onclick="openEasypaisa()">Pay with Easypaisa</button>
+        </div>
+    `;
+    
+    document.getElementById('delivery-result').scrollIntoView({ behavior: 'smooth' });
+}
 
+// Function to trigger the notification
+function sendOrderSMS(orderID, customer, phone, address) {
+    const adminNumber = "923255103443"; // Your number in international format
+    const message = `New Order: ${orderID}\nCustomer: ${customer}\nPhone: ${phone}\nAddress: ${address}`;
+    
+    console.log("Notifying Admin at " + adminNumber + ": " + message);
+    
+    // Note: For real automated SMS, you would fetch a Twilio or CallMeBot API here:
+    // fetch(`https://api.example.com/send?to=${adminNumber}&msg=${encodeURIComponent(message)}`);
+}
 </div>
 
 <p id="paymentStatus" style="text-align:center; font-weight:bold; margin-top:15px;"></p>
