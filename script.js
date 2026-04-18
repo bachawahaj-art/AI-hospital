@@ -272,38 +272,73 @@ let jcAttempts = 0;
     }
 
     function placeOrder() {
+    // 1. Get Input Values
     const name = document.getElementById('dName').value;
     const phone = document.getElementById('dPhone').value;
     const address = document.getElementById('dAddress').value;
-    const file = document.getElementById('prescriptionFile').files[0];
+    const fileInput = document.getElementById('prescriptionFile');
+    const fileName = fileInput.files[0] ? fileInput.files[0].name : "Attached Digital Record";
 
+    // 2. Validation: Ensure required fields are not empty
     if (!name || !phone || !address) {
         alert("Please fill in all delivery details.");
         return;
     }
 
+    // 3. Generate Order ID and Metadata
     const orderID = "ORD-" + Math.floor(100000 + Math.random() * 900000);
-    
-    // --- NEW: SMS NOTIFICATION LOGIC ---
-    // This simulates sending the order details to your phone number 0325 5103 443
-    sendOrderSMS(orderID, name, phone, address);
+    const adminNumber = "923255103443"; // Your WhatsApp number in international format
 
+    // 4. Create Notification Message
+    // This pre-fills a message for your phone
+    const message = `*APS HOSPITAL - NEW ORDER*%0A` +
+                    `----------------------------%0A` +
+                    `*Order ID:* ${orderID}%0A` +
+                    `*Customer:* ${name}%0A` +
+                    `*Phone:* ${phone}%0A` +
+                    `*Address:* ${address}%0A` +
+                    `*Prescription:* ${fileName}`;
+
+    // 5. Trigger Notification (Opens WhatsApp with pre-filled details)
+    window.open(`https://wa.me/${adminNumber}?text=${message}`, '_blank');
+
+    // 6. Update the Website UI with the Receipt
     document.getElementById('delivery-result').style.display = 'block';
     document.getElementById('deliveryReceipt').innerHTML = `
         <div style="text-align:center;">
             <h3 style="margin:0; color:#34a853;">APS PHARMACY DELIVERY</h3>
-            <p>Order Confirmed & SMS Sent to Admin</p>
+            <p style="font-size:0.9rem; color:#666;">Order details sent to Admin: 0325 5103 443</p>
         </div>
         <hr>
-        <p><strong>Order ID:</strong> ${orderID}</p>
-        <p><strong>Customer:</strong> ${name}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Address:</strong> ${address}</p>
-        <hr>
-        <div style="margin-top:20px;">
+        <div style="line-height: 1.6;">
+            <p><strong>Order ID:</strong> ${orderID}</p>
+            <p><strong>Customer:</strong> ${name}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+            <p><strong>Address:</strong> ${address}</p>
+            <p><strong>Prescription:</strong> ${fileName}</p>
+        </div>
+        
+        <h4 style="text-align:center; margin-top:20px; border-top: 1px solid #eee; pt-20">SELECT PAYMENT METHOD</h4>
+        <div style="margin-top:10px;">
             <button class="btn-submit" onclick="openEasypaisa()">Pay with Easypaisa</button>
+            <button class="btn-submit" style="margin-top:10px; background:#e11d48;" onclick="openJazzCash()">Pay with JazzCash</button>
+        </div>
+
+        <p id="paymentStatus" style="text-align:center; font-weight:bold; margin-top:15px;"></p>
+        <hr>
+        <div style="display:flex; justify-content:space-between">
+            <span>Delivery Status:</span> 
+            <span style="color:#1a73e8; font-weight:bold;">AWAITING PAYMENT</span>
+        </div>
+        <div style="display:flex; justify-content:space-between">
+            <span>Est. Arrival:</span> 
+            <strong>Within 2 Hours</strong>
         </div>
     `;
+    
+    // Smooth scroll to the receipt
+    document.getElementById('delivery-result').scrollIntoView({ behavior: 'smooth' });
+}
     
     document.getElementById('delivery-result').scrollIntoView({ behavior: 'smooth' });
 }
